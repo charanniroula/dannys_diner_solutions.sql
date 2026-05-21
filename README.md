@@ -19,6 +19,7 @@ All 10 optimized SQL queries along with the schema setup can be found in [dannys
    --------------------*/
 
 -- 1. What is the total amount each customer spent at the restaurant?
+
 /*
 SELECT
   	s.customer_id,
@@ -43,6 +44,7 @@ GROUP BY
 -- > B - 6, A - 4, C - 2
 
 -- 3. What was the first item from the menu purchased by each customer?
+
 /*
 WITH ranked AS (  
   SELECT
@@ -67,6 +69,7 @@ WHERE rnk = 1
 -- > A - curry, sushu B - curry C - ramen 
 
 -- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+
 /*
 SELECT 
 	product_name,
@@ -82,6 +85,7 @@ ORDER BY
 -- > Ramen 8 times
 
 -- 5. Which item was the most popular for each customer?
+
 /*
 WITH most_popular AS (
   SELECT 
@@ -107,6 +111,7 @@ WHERE rank = 1;
 -- > Customer A - ramen 3 times, Customer B - ramen, cutty, sushi all 2 times, C - ramen 3 times
 
 -- 6. Which item was purchased first by the customer after they became a member?
+
 /*
 WITH RANKED AS(  
   SELECT 
@@ -136,6 +141,7 @@ WHERE
 -- > Customer A - curry, Customer B - sushi
 
 -- 7. Which item was purchased just before the customer became a member?
+
 /*
 WITH RANKED AS(  
   SELECT 
@@ -165,6 +171,7 @@ WHERE
 -- > Customer A - sushi and curry, Customer B - sushi
 
 -- 8. What is the total items and amount spent for each member before they became a member?
+
 /*
 SELECT 
    s.customer_id,
@@ -186,6 +193,7 @@ ORDER BY
 -- > customer B bought 3 items totaling $40
 
 -- 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+
 /*
 SELECT
 	s.customer_id,
@@ -202,6 +210,7 @@ ORDER BY
 -- > Customer A - 860 points, B - 940 points, C - 360 points   
 
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+
 /*
 SELECT
 	s.customer_id,
@@ -224,7 +233,9 @@ ORDER BY
 -- > January points: Customer A = 1370, Customer B = 820
 
 -- BONUS QUESTIONS
+
 /* The following questions are related creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL. */
+
 /*
 SELECT
 	s.customer_id,
@@ -244,6 +255,7 @@ ORDER BY
     s.order_date,
     m.price DESC
 */  
+
 /* Rank All The Things
 Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program */
 
