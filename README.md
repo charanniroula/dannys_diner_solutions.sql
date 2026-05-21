@@ -29,6 +29,7 @@ GROUP BY
 	s.customer_id
 */
 -- > Customer A spent $76, B spent $74, C spent $36
+
 -- 2. How many days has each customer visited the restaurant?
 /*
 SELECT
@@ -40,6 +41,7 @@ GROUP BY
 	s.customer_id
 */
 -- > B - 6, A - 4, C - 2
+
 -- 3. What was the first item from the menu purchased by each customer?
 /*
 WITH ranked AS (  
@@ -63,6 +65,7 @@ FROM ranked
 WHERE rnk = 1
 */
 -- > A - curry, sushu B - curry C - ramen 
+
 -- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 /*
 SELECT 
@@ -77,6 +80,7 @@ ORDER BY
 	times_purchased DESC
 */
 -- > Ramen 8 times
+
 -- 5. Which item was the most popular for each customer?
 /*
 WITH most_popular AS (
@@ -101,6 +105,7 @@ FROM most_popular
 WHERE rank = 1;
 */
 -- > Customer A - ramen 3 times, Customer B - ramen, cutty, sushi all 2 times, C - ramen 3 times
+
 -- 6. Which item was purchased first by the customer after they became a member?
 /*
 WITH RANKED AS(  
@@ -129,6 +134,7 @@ WHERE
 	rnk = 1
 */
 -- > Customer A - curry, Customer B - sushi
+
 -- 7. Which item was purchased just before the customer became a member?
 /*
 WITH RANKED AS(  
@@ -157,6 +163,7 @@ WHERE
 	rnk = 1
 */
 -- > Customer A - sushi and curry, Customer B - sushi
+
 -- 8. What is the total items and amount spent for each member before they became a member?
 /*
 SELECT 
@@ -177,6 +184,7 @@ ORDER BY
 */
 -- > customer A bought 2 items totaling $25
 -- > customer B bought 3 items totaling $40
+
 -- 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 /*
 SELECT
@@ -191,7 +199,8 @@ GROUP BY
 ORDER BY
 	s.customer_id
 */
--- > Customer A - 860 points, B - 940 points, C - 360 points    
+-- > Customer A - 860 points, B - 940 points, C - 360 points   
+
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 /*
 SELECT
