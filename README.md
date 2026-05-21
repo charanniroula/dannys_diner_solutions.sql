@@ -22,7 +22,6 @@ All 10 optimized SQL queries along with the schema setup can be found in [dannys
 
 ### 1. What is the total amount each customer spent at the restaurant?
 
-SQL
 SELECT
   s.customer_id,
   SUM(m.price) AS total
@@ -33,9 +32,11 @@ GROUP BY
   s.customer_id
 ORDER BY 
   s.customer_id;
+  
 -- > Customer A spent $76, B spent $74, C spent $36
 
 -- 2. How many days has each customer visited the restaurant?
+
 /*
 SELECT
   	s.customer_id,
