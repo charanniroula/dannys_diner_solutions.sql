@@ -44,6 +44,7 @@ Customer C: $36
 
 2. How many days has each customer visited the restaurant?
 SQL
+
 SELECT
   s.customer_id,
   COUNT(DISTINCT s.order_date) AS total_days
@@ -64,6 +65,7 @@ Customer C: 2 days
 
 3. What was the first item from the menu purchased by each customer?
 SQL
+
 WITH ranked AS (  
   SELECT
       s.customer_id,
@@ -94,6 +96,7 @@ Customer C: Ramen
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 SQL
+
 SELECT 
   m.product_name,
   COUNT(s.product_id) AS times_purchased
@@ -111,6 +114,7 @@ Ramen is the most purchased item, bought 8 times in total.
 
 5. Which item was the most popular for each customer?
 SQL
+
 WITH most_popular AS (
   SELECT 
     sales.customer_id, 
@@ -140,6 +144,7 @@ Customer C: Ramen (3 times)
 
 6. Which item was purchased first by the customer after they became a member?
 SQL
+
 WITH RANKED AS (  
   SELECT 
       s.customer_id,
@@ -167,6 +172,7 @@ Customer B: Sushi (on 2021-01-11)
 
 7. Which item was purchased just before the customer became a member?
 SQL
+
 WITH RANKED AS (  
   SELECT 
       s.customer_id,
@@ -194,6 +200,7 @@ Customer B: Sushi (on 2021-01-04)
 
 8. What is the total items and amount spent for each member before they became a member?
 SQL
+
 SELECT 
    s.customer_id,
    COUNT(s.product_id) AS total_sold,
@@ -212,6 +219,7 @@ Customer B: 3 items, totaling $40
 
 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 SQL
+
 SELECT
   s.customer_id,
   SUM(CASE WHEN m.product_name = 'sushi' THEN 10 * 2 * m.price 
@@ -230,6 +238,7 @@ Customer C: 360 points
 
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 SQL
+
 SELECT
   s.customer_id,
   SUM(CASE 
@@ -252,6 +261,7 @@ Customer B: 820 points
 💎 Bonus Questions
 Bonus 1: Join All The Things
 SQL
+
 SELECT
   s.customer_id,
   s.order_date,
@@ -270,6 +280,7 @@ ORDER BY
   m.price DESC;
 Bonus 2: Rank All The Things
 SQL
+
 WITH joined_table AS (  
   SELECT
       s.customer_id,
