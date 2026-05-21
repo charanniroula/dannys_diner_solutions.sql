@@ -22,7 +22,7 @@ All 10 optimized SQL queries along with the schema setup can be found in [dannys
 
 ### 1. What is the total amount each customer spent at the restaurant?
 
-'''sql
+```sql
 SELECT
   s.customer_id,
   SUM(m.price) AS total
